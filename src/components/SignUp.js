@@ -92,14 +92,14 @@ const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
     },
     [`&.${stepConnectorClasses.active}`]: {
         [`& .${stepConnectorClasses.line}`]: {
-            backgroundImage:
-                "linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)",
+            backgroundColor:
+                "#186FE7",
         },
     },
     [`&.${stepConnectorClasses.completed}`]: {
         [`& .${stepConnectorClasses.line}`]: {
-            backgroundImage:
-                "linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)",
+            backgroundColor:
+                "#969696",
         },
     },
     [`& .${stepConnectorClasses.line}`]: {
@@ -128,8 +128,8 @@ const ColorlibStepIconRoot = styled("div")(({ theme, ownerState }) => ({
         boxShadow: "0 4px 10px 0 rgba(0,0,0,.25)",
     }),
     ...(ownerState.completed && {
-        backgroundImage:
-            "linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)",
+        backgroundColor:
+            "#186FE7",
     }),
 }));
 
@@ -137,7 +137,7 @@ function ColorlibStepIcon(props) {
     const { active, completed, className } = props;
 
     const icons = {
-        1: <SettingsIcon />,
+        1: 1,
         2: <GroupAddIcon />,
         3: <VideoLabelIcon />,
     };
