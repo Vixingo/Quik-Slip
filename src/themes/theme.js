@@ -1,23 +1,13 @@
 import { createTheme } from "@mui/material/styles";
 export const theme = createTheme({
     palette: {
-        mode: "dark",
+        mode: "light",
         primary: {
-            main: "#F0B90B",
+            main: "#186FE7",
         },
-        text: {
-            secondary: "#8ea5c0",
-        },
-        action: { selected: "rgba(240, 185, 11, 0.8)" },
-        divider: "#515459",
     },
 
     typography: {
-        fontFamily: "Open Sans",
-        h1: {
-            fontWeight: 700,
-            fontSize: "2rem",
-            fontFamily: "Open Sans",
-        },
+        fontFamily: "Inter",
     },
 });

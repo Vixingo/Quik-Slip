@@ -12,79 +12,12 @@ import VideoLabelIcon from "@mui/icons-material/VideoLabel";
 import StepConnector, {
     stepConnectorClasses,
 } from "@mui/material/StepConnector";
-
-const QontoConnector = styled(StepConnector)(({ theme }) => ({
-    [`&.${stepConnectorClasses.alternativeLabel}`]: {
-        top: 10,
-        left: "calc(-50% + 16px)",
-        right: "calc(50% + 16px)",
-    },
-    [`&.${stepConnectorClasses.active}`]: {
-        [`& .${stepConnectorClasses.line}`]: {
-            borderColor: "#784af4",
-        },
-    },
-    [`&.${stepConnectorClasses.completed}`]: {
-        [`& .${stepConnectorClasses.line}`]: {
-            borderColor: "#784af4",
-        },
-    },
-    [`& .${stepConnectorClasses.line}`]: {
-        borderColor:
-            theme.palette.mode === "dark" ? theme.palette.grey[800] : "#eaeaf0",
-        borderTopWidth: 3,
-        borderRadius: 1,
-    },
-}));
-
-const QontoStepIconRoot = styled("div")(({ theme, ownerState }) => ({
-    color: theme.palette.mode === "dark" ? theme.palette.grey[700] : "#eaeaf0",
-    display: "flex",
-    height: 22,
-    alignItems: "center",
-    ...(ownerState.active && {
-        color: "#784af4",
-    }),
-    "& .QontoStepIcon-completedIcon": {
-        color: "#784af4",
-        zIndex: 1,
-        fontSize: 18,
-    },
-    "& .QontoStepIcon-circle": {
-        width: 8,
-        height: 8,
-        borderRadius: "50%",
-        backgroundColor: "currentColor",
-    },
-}));
-
-function QontoStepIcon(props) {
-    const { active, completed, className } = props;
-
-    return (
-        <QontoStepIconRoot ownerState={{ active }} className={className}>
-            {completed ? (
-                <Check className="QontoStepIcon-completedIcon" />
-            ) : (
-                <div className="QontoStepIcon-circle" />
-            )}
-        </QontoStepIconRoot>
-    );
-}
-
-QontoStepIcon.propTypes = {
-    /**
-     * Whether this step is active.
-     * @default false
-     */
-    active: PropTypes.bool,
-    className: PropTypes.string,
-    /**
-     * Mark the step as completed. Is passed to child components.
-     * @default false
-     */
-    completed: PropTypes.bool,
-};
+import { Container, Typography, Box, Button } from "@mui/material";
+import Personal from "./Personal";
+import Complex from "./Complex";
+import Parking from "./Parking";
+import Confirmation from "./Confirmation";
+import Complete from "./Complete";
 
 const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
     [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -92,44 +25,46 @@ const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
     },
     [`&.${stepConnectorClasses.active}`]: {
         [`& .${stepConnectorClasses.line}`]: {
-            backgroundColor:
-                "#186FE7",
+            backgroundColor: "#186FE7",
         },
     },
     [`&.${stepConnectorClasses.completed}`]: {
         [`& .${stepConnectorClasses.line}`]: {
-            backgroundColor:
-                "#969696",
+            backgroundColor: "#186FE7",
         },
     },
     [`& .${stepConnectorClasses.line}`]: {
-        height: 3,
+        height: 2,
         border: 0,
         backgroundColor:
-            theme.palette.mode === "dark" ? theme.palette.grey[800] : "#eaeaf0",
+            theme.palette.mode === "dark" ? theme.palette.grey[800] : "#969696",
         borderRadius: 1,
     },
 }));
 
 const ColorlibStepIconRoot = styled("div")(({ theme, ownerState }) => ({
     backgroundColor:
-        theme.palette.mode === "dark" ? theme.palette.grey[700] : "#ccc",
+        theme.palette.mode === "dark" ? theme.palette.grey[700] : "#fff",
     zIndex: 1,
-    color: "#fff",
+    color: "#969696",
+    border: "1px solid #969696",
     width: 50,
     height: 50,
     display: "flex",
     borderRadius: "50%",
     justifyContent: "center",
+
     alignItems: "center",
     ...(ownerState.active && {
-        backgroundImage:
-            "linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)",
+        backgroundColor: "#186FE7",
+        border: "1px solid #fff",
+        color: "#fff",
         boxShadow: "0 4px 10px 0 rgba(0,0,0,.25)",
     }),
     ...(ownerState.completed && {
-        backgroundColor:
-            "#186FE7",
+        backgroundColor: "#186FE7",
+        border: "1px solid #186FE7",
+        color: "#fff",
     }),
 }));
 
@@ -138,8 +73,10 @@ function ColorlibStepIcon(props) {
 
     const icons = {
         1: 1,
-        2: <GroupAddIcon />,
-        3: <VideoLabelIcon />,
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
     };
 
     return (
@@ -171,40 +108,81 @@ ColorlibStepIcon.propTypes = {
 };
 
 const steps = [
-    "Select campaign settings",
-    "Create an ad group",
-    "Create an ad",
+    "Personal Information",
+    "Complex Information",
+    "Parking Information",
+    "Confirmation",
+    "Complete",
 ];
 
+function getStepContent(step) {
+    switch (step) {
+        case 0:
+            return <Personal />;
+        case 1:
+            return <Complex />;
+        case 2:
+            return <Parking />;
+        case 3:
+            return <Confirmation />;
+
+        default:
+            throw new Error("Unknown step");
+    }
+}
+
 export default function SignUp() {
+    const [activeStep, setActiveStep] = React.useState(0);
+
+    const handleNext = () => {
+        setActiveStep(activeStep + 1);
+    };
+
+    const handleBack = () => {
+        setActiveStep(activeStep - 1);
+    };
     return (
-        <Stack sx={{ width: "100%" }} spacing={4}>
-            <Stepper
-                alternativeLabel
-                activeStep={1}
-                connector={<QontoConnector />}
-            >
-                {steps.map((label) => (
-                    <Step key={label}>
-                        <StepLabel StepIconComponent={QontoStepIcon}>
-                            {label}
-                        </StepLabel>
-                    </Step>
-                ))}
-            </Stepper>
-            <Stepper
-                alternativeLabel
-                activeStep={1}
-                connector={<ColorlibConnector />}
-            >
-                {steps.map((label) => (
-                    <Step key={label}>
-                        <StepLabel StepIconComponent={ColorlibStepIcon}>
-                            {label}
-                        </StepLabel>
-                    </Step>
-                ))}
-            </Stepper>
-        </Stack>
+        <Container>
+            {" "}
+            <Stack sx={{ width: "100%" }} spacing={4}>
+                <Stepper
+                    alternativeLabel
+                    activeStep={activeStep}
+                    connector={<ColorlibConnector />}
+                >
+                    {steps.map((label) => (
+                        <Step key={label}>
+                            <StepLabel StepIconComponent={ColorlibStepIcon}>
+                                {label}
+                            </StepLabel>
+                        </Step>
+                    ))}
+                </Stepper>
+            </Stack>
+            {activeStep === steps.length - 1 ? (
+                <>
+                    <Complete />
+                </>
+            ) : (
+                <>
+                    {getStepContent(activeStep)}
+                    <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+                        {/* {activeStep !== 0 && (
+                            <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+                                Back
+                            </Button>
+                        )} */}
+
+                        <Button
+                            variant="contained"
+                            onClick={handleNext}
+                            sx={{ mt: 3, ml: 1 }}
+                        >
+                            Continue
+                        </Button>
+                    </Box>
+                </>
+            )}
+        </Container>
     );
 }

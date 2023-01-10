@@ -7,6 +7,8 @@ function App() {
             <Box
                 sx={{
                     textAlign: "center",
+                    mt: 4,
+                    mb: 4,
                 }}
             >
                 <img src="/img/logo.png" alt="" />
