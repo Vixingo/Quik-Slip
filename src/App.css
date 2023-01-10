@@ -7,3 +7,24 @@
 .css-18ibvgg-MuiStepLabel-label.MuiStepLabel-alternativeLabel {
     margin-top: 8px !important;
 }
+body {
+    background-color: #f5f5f5;
+}
+input {
+    font-family: "Arimo";
+}
+.text_input {
+    padding: 8px;
+    font-family: "Arimo";
+    font-size: 16px;
+    padding-left: 48px;
+    width: 100%;
+    font-weight: 400;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #186fe7;
+    border: 1px solid #186fe7;
+}
+.text_input:focus-visible {
+    outline: none;
+}

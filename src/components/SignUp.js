@@ -12,7 +12,7 @@ import VideoLabelIcon from "@mui/icons-material/VideoLabel";
 import StepConnector, {
     stepConnectorClasses,
 } from "@mui/material/StepConnector";
-import { Container, Typography, Box, Button } from "@mui/material";
+import { Container, Typography, Box, Button, Grid } from "@mui/material";
 import Personal from "./Personal";
 import Complex from "./Complex";
 import Parking from "./Parking";
@@ -34,7 +34,7 @@ const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
         },
     },
     [`& .${stepConnectorClasses.line}`]: {
-        height: 2,
+        height: 1,
         border: 0,
         backgroundColor:
             theme.palette.mode === "dark" ? theme.palette.grey[800] : "#969696",
@@ -44,7 +44,7 @@ const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
 
 const ColorlibStepIconRoot = styled("div")(({ theme, ownerState }) => ({
     backgroundColor:
-        theme.palette.mode === "dark" ? theme.palette.grey[700] : "#fff",
+        theme.palette.mode === "dark" ? theme.palette.grey[700] : "#f5f5f5",
     zIndex: 1,
     color: "#969696",
     border: "1px solid #969696",
@@ -166,21 +166,34 @@ export default function SignUp() {
             ) : (
                 <>
                     {getStepContent(activeStep)}
-                    <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                        {/* {activeStep !== 0 && (
+                    <Container maxWidth="md" sx={{ marginBottom: "100px" }}>
+                        {" "}
+                        <Grid container>
+                            <Grid item xs={5}></Grid>
+                            <Grid item xs={7}>
+                                <Box sx={{ maxWidth: "400px" }}>
+                                    {/* {activeStep !== 0 && (
                             <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
                                 Back
                             </Button>
                         )} */}
-
-                        <Button
-                            variant="contained"
-                            onClick={handleNext}
-                            sx={{ mt: 3, ml: 1 }}
-                        >
-                            Continue
-                        </Button>
-                    </Box>
+                                    <Button
+                                        size="large"
+                                        variant="contained"
+                                        fullWidth
+                                        onClick={handleNext}
+                                        sx={{
+                                            mt: 3,
+                                            ml: 1,
+                                            borderRadius: "8px",
+                                        }}
+                                    >
+                                        Continue
+                                    </Button>
+                                </Box>
+                            </Grid>
+                        </Grid>
+                    </Container>
                 </>
             )}
         </Container>

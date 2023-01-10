@@ -9,5 +9,9 @@ export const theme = createTheme({
 
     typography: {
         fontFamily: "Inter",
+
+        body2: {
+            fontFamily: "Arimo",
+        },
     },
 });
