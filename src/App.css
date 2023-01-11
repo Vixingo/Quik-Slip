@@ -28,3 +28,6 @@ input {
 .text_input:focus-visible {
     outline: none;
 }
+.MuiOutlinedInput-notchedOutline.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+    border: 1px solid #186fe7 !important;
+}

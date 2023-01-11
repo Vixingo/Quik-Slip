@@ -5,14 +5,10 @@ import Stack from "@mui/material/Stack";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
-import Check from "@mui/icons-material/Check";
-import SettingsIcon from "@mui/icons-material/Settings";
-import GroupAddIcon from "@mui/icons-material/GroupAdd";
-import VideoLabelIcon from "@mui/icons-material/VideoLabel";
 import StepConnector, {
     stepConnectorClasses,
 } from "@mui/material/StepConnector";
-import { Container, Typography, Box, Button, Grid } from "@mui/material";
+import { Container, Box, Button, Grid } from "@mui/material";
 import Personal from "./Personal";
 import Complex from "./Complex";
 import Parking from "./Parking";
@@ -136,6 +132,7 @@ export default function SignUp() {
 
     const handleNext = () => {
         setActiveStep(activeStep + 1);
+        window.scrollTo(0);
     };
 
     const handleBack = () => {

@@ -17,6 +17,7 @@ function HeadingText(props) {
                 sx={{
                     fontSize: "12px",
                     fontWeight: "400",
+                    maxWidth: "300px",
                     color: "#282828",
                     mb: 5,
                 }}

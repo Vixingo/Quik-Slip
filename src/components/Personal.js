@@ -1,14 +1,6 @@
-import {
-    Box,
-    Container,
-    Grid,
-    InputAdornment,
-    TextField,
-    Typography,
-} from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 import React from "react";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
-import { AccountCircle } from "@mui/icons-material";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import HeadingText from "./HeadingText";
@@ -34,7 +26,7 @@ function Personal() {
                                 sx={{
                                     position: "absolute",
                                     top: "5px",
-                                    left: "10px",
+                                    left: "12px",
                                 }}
                             />
                             <input
@@ -51,7 +43,7 @@ function Personal() {
                                 sx={{
                                     position: "absolute",
                                     top: "5px",
-                                    left: "10px",
+                                    left: "12px",
                                 }}
                             />
                             <input
@@ -68,7 +60,7 @@ function Personal() {
                                 sx={{
                                     position: "absolute",
                                     top: "5px",
-                                    left: "10px",
+                                    left: "12px",
                                 }}
                             />
                             <input
@@ -98,7 +90,7 @@ function Personal() {
                                 sx={{
                                     position: "absolute",
                                     top: "5px",
-                                    left: "10px",
+                                    left: "12px",
                                 }}
                             />
                             <input
@@ -115,7 +107,7 @@ function Personal() {
                                 sx={{
                                     position: "absolute",
                                     top: "5px",
-                                    left: "10px",
+                                    left: "12px",
                                 }}
                             />
                             <input
@@ -145,7 +137,7 @@ function Personal() {
                                 sx={{
                                     position: "absolute",
                                     top: "5px",
-                                    left: "10px",
+                                    left: "12px",
                                 }}
                             />
                             <input
