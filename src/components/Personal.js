@@ -9,7 +9,7 @@ import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 function Personal() {
     return (
         <>
-            <Container maxWidth={"md"} sx={{ marginTop: "100px" }}>
+            <Container maxWidth={"md"}>
                 <Grid container>
                     <Grid item xs={12} sm={5}>
                         <HeadingText

@@ -141,7 +141,7 @@ export default function SignUp() {
     return (
         <Container>
             {" "}
-            <Stack sx={{ width: "100%" }} spacing={4}>
+            <Stack sx={{ width: "100%", marginBottom: "100px" }} spacing={4}>
                 <Stepper
                     alternativeLabel
                     activeStep={activeStep}

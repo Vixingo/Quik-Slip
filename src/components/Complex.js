@@ -27,7 +27,7 @@ function Complex() {
 
     return (
         <>
-            <Container maxWidth={"md"} sx={{ marginTop: "100px" }}>
+            <Container maxWidth={"md"}>
                 <Grid container>
                     <Grid item xs={12} sm={5}>
                         <HeadingText
@@ -143,7 +143,14 @@ function Complex() {
                                         backgroundColor: "#fff",
                                     }}
                                     startAdornment={
-                                        <LocalParkingIcon color="primary" />
+                                        <LocalParkingIcon
+                                            sx={{
+                                                backgroundColor: "#186fe7",
+                                                color: "#fff",
+                                                borderRadius: "3px",
+                                                scale: "0.8",
+                                            }}
+                                        />
                                     }
                                 >
                                     {" "}
