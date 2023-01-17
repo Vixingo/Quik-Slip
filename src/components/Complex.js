@@ -15,16 +15,11 @@ import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import HeadingText from "./HeadingText";
 import PlaceIcon from "@mui/icons-material/Place";
 import ApartmentIcon from "@mui/icons-material/Apartment";
+import TaskIcon from "@mui/icons-material/Task";
 import LocalParkingIcon from "@mui/icons-material/LocalParking";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
-function Complex() {
-    const [age, setAge] = React.useState("placeholder");
-
-    const handleChange = (event) => {
-        setAge(event.target.value);
-    };
-
+function Complex({ formData, setFormData }) {
     return (
         <>
             <Container maxWidth={"md"}>
@@ -51,6 +46,13 @@ function Complex() {
                                 className="text_input"
                                 type="text"
                                 placeholder="Enter Complex Name"
+                                onChange={(e) => {
+                                    setFormData({
+                                        ...formData,
+                                        comName: e.target.value,
+                                    });
+                                }}
+                                value={formData.comName}
                             />
                         </Box>
                         <Box
@@ -68,6 +70,13 @@ function Complex() {
                                 className="text_input"
                                 type="text"
                                 placeholder="Enter Complex Address"
+                                onChange={(e) => {
+                                    setFormData({
+                                        ...formData,
+                                        comAddress: e.target.value,
+                                    });
+                                }}
+                                value={formData.comAddress}
                             />
                         </Box>
                         <Box
@@ -85,6 +94,13 @@ function Complex() {
                                 className="text_input"
                                 type="text"
                                 placeholder="Enter Number of Units"
+                                onChange={(e) => {
+                                    setFormData({
+                                        ...formData,
+                                        comUnit: e.target.value,
+                                    });
+                                }}
+                                value={formData.comUnit}
                             />
                         </Box>
                         <Box
@@ -102,6 +118,13 @@ function Complex() {
                                 className="text_input"
                                 type="text"
                                 placeholder="Enter Complex Email"
+                                onChange={(e) => {
+                                    setFormData({
+                                        ...formData,
+                                        comMail: e.target.value,
+                                    });
+                                }}
+                                value={formData.comMail}
                             />
                         </Box>
                         <Box
@@ -119,6 +142,13 @@ function Complex() {
                                 className="text_input"
                                 type="text"
                                 placeholder="Enter Complex Phone Number"
+                                onChange={(e) => {
+                                    setFormData({
+                                        ...formData,
+                                        comPhone: e.target.value,
+                                    });
+                                }}
+                                value={formData.comPhone}
                             />
                         </Box>
                         <Box sx={{ marginBottom: "48px" }}>
@@ -129,9 +159,14 @@ function Complex() {
                                 <Select
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
-                                    value={age}
                                     label="Gated or Open Complex"
-                                    onChange={handleChange}
+                                    onChange={(e) => {
+                                        setFormData({
+                                            ...formData,
+                                            gate: e.target.value,
+                                        });
+                                    }}
+                                    value={formData.gate}
                                     color="primary"
                                     IconComponent={
                                         KeyboardArrowDownOutlinedIcon
@@ -157,8 +192,12 @@ function Complex() {
                                     <MenuItem disabled value={"placeholder"}>
                                         <>Selected Gated or Open Complex</>
                                     </MenuItem>
-                                    <MenuItem value={0}>Gated Complex</MenuItem>
-                                    <MenuItem value={1}>Open Complex</MenuItem>
+                                    <MenuItem value={" Gated Complex"}>
+                                        Gated Complex
+                                    </MenuItem>
+                                    <MenuItem value={"Open Complex"}>
+                                        Open Complex
+                                    </MenuItem>
                                 </Select>
                             </FormControl>
                         </Box>
@@ -184,32 +223,81 @@ function Complex() {
                                     backgroundColor: "#fff",
                                     textAlign: "center",
                                     display: "block",
-                                    border: "1px dashed #186FE7",
+                                    position: "relative",
+                                    border:
+                                        formData.fileName == ""
+                                            ? "1px dashed #186FE7"
+                                            : "1px solid #186FE7",
                                     borderRadius: "8px",
                                     width: "100%",
-                                    padding: "20px",
+                                    padding:
+                                        formData.fileName == ""
+                                            ? "20px"
+                                            : "8px 8px 8px 48px",
+
                                     "&:hover": {
                                         backgroundColor: "#f9f9f9",
                                     },
                                 }}
                             >
-                                <input hidden accept="image/*" type="file" />
-                                <AddPhotoAlternateOutlinedIcon
-                                    color="primary"
-                                    fontSize="large"
+                                <input
+                                    hidden
+                                    accept="image/*"
+                                    type="file"
+                                    onChange={(e) => {
+                                        setFormData({
+                                            ...formData,
+                                            fileName: e.target.files[0].name,
+                                        });
+                                    }}
+                                    // value={formData.fileName}
                                 />
 
-                                <Typography
-                                    sx={{
-                                        fontFamily: "Arimo",
-                                        color: "#186FE7",
-                                    }}
-                                >
-                                    Drop or click to upload your image here
-                                    <Typography sx={{ fontSize: "10px" }}>
-                                        Supports JPEG, PNG
-                                    </Typography>
-                                </Typography>
+                                {formData.fileName == "" ? (
+                                    <>
+                                        <AddPhotoAlternateOutlinedIcon
+                                            color="primary"
+                                            fontSize="large"
+                                        />
+                                        <Typography
+                                            sx={{
+                                                fontFamily: "Arimo",
+                                                color: "#186FE7",
+                                            }}
+                                        >
+                                            Drop or click to upload your image
+                                            here
+                                            <Typography
+                                                sx={{ fontSize: "10px" }}
+                                            >
+                                                Supports JPEG, PNG
+                                            </Typography>
+                                        </Typography>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Box>
+                                            {" "}
+                                            <TaskIcon
+                                                sx={{
+                                                    color: "#186FE7",
+                                                    position: "absolute",
+                                                    top: "5px",
+                                                    left: "12px",
+                                                }}
+                                            />
+                                            <Typography
+                                                sx={{
+                                                    fontFamily: "Arimo",
+                                                    color: "#186FE7",
+                                                    textAlign: "left",
+                                                }}
+                                            >
+                                                {formData.fileName}
+                                            </Typography>
+                                        </Box>
+                                    </>
+                                )}
                             </Box>
                         </Box>
                     </Grid>

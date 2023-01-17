@@ -7,26 +7,15 @@ import {
     InputLabel,
     MenuItem,
     Select,
-    Typography,
 } from "@mui/material";
-import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import HeadingText from "./HeadingText";
-import PlaceIcon from "@mui/icons-material/Place";
-import ApartmentIcon from "@mui/icons-material/Apartment";
 import LocalParkingIcon from "@mui/icons-material/LocalParking";
 import GroupIcon from "@mui/icons-material/Group";
 import AccessibleIcon from "@mui/icons-material/Accessible";
 import BungalowIcon from "@mui/icons-material/Bungalow";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import FunctionsIcon from "@mui/icons-material/Functions";
-function Parking() {
-    const [age, setAge] = React.useState("placeholder");
-
-    const handleChange = (event) => {
-        setAge(event.target.value);
-    };
+function Parking({ formData, setFormData }) {
     return (
         <>
             <Container maxWidth={"md"}>
@@ -53,6 +42,13 @@ function Parking() {
                                 className="text_input"
                                 type="text"
                                 placeholder="Number of Parking Spots"
+                                onChange={(e) => {
+                                    setFormData({
+                                        ...formData,
+                                        pSpot: e.target.value,
+                                    });
+                                }}
+                                value={formData.pSpot}
                             />
                         </Box>
                         <Box
@@ -73,6 +69,13 @@ function Parking() {
                                 className="text_input"
                                 type="text"
                                 placeholder="Number of Tenant Parking"
+                                onChange={(e) => {
+                                    setFormData({
+                                        ...formData,
+                                        pNumber: e.target.value,
+                                    });
+                                }}
+                                value={formData.pNumber}
                             />
                         </Box>
                         <Box
@@ -90,6 +93,13 @@ function Parking() {
                                 className="text_input"
                                 type="text"
                                 placeholder="Number of Guest Parking"
+                                onChange={(e) => {
+                                    setFormData({
+                                        ...formData,
+                                        pNumGuest: e.target.value,
+                                    });
+                                }}
+                                value={formData.pNumGuest}
                             />
                         </Box>
                         <Box
@@ -107,6 +117,13 @@ function Parking() {
                                 className="text_input"
                                 type="text"
                                 placeholder="Number of Administration Parking"
+                                onChange={(e) => {
+                                    setFormData({
+                                        ...formData,
+                                        pAdmin: e.target.value,
+                                    });
+                                }}
+                                value={formData.pAdmin}
                             />
                         </Box>
                         <Box
@@ -124,6 +141,13 @@ function Parking() {
                                 className="text_input"
                                 type="text"
                                 placeholder="Number of Handicap Parking"
+                                onChange={(e) => {
+                                    setFormData({
+                                        ...formData,
+                                        pHandcap: e.target.value,
+                                    });
+                                }}
+                                value={formData.pHandcap}
                             />
                         </Box>
                     </Grid>
@@ -144,9 +168,14 @@ function Parking() {
                                 <Select
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
-                                    value={age}
                                     label="Parking System"
-                                    onChange={handleChange}
+                                    onChange={(e) => {
+                                        setFormData({
+                                            ...formData,
+                                            pSystem: e.target.value,
+                                        });
+                                    }}
+                                    value={formData.pSystem}
                                     color="primary"
                                     IconComponent={
                                         KeyboardArrowDownOutlinedIcon

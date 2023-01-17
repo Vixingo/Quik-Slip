@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
 
-function Complete() {
+function Complete({ formData, setFormData }) {
     return (
         <>
             <Box sx={{ textAlign: "center" }}>
@@ -15,7 +15,7 @@ function Complete() {
                         mb: "12px",
                     }}
                 >
-                    Congratulations, Eric!
+                    Congratulations, {formData.name}!
                 </Typography>
                 <Typography
                     sx={{

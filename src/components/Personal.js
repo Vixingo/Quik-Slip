@@ -1,12 +1,12 @@
 import { Box, Container, Grid } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import HeadingText from "./HeadingText";
 import LockIcon from "@mui/icons-material/Lock";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
-function Personal() {
+function Personal({ formData, setFormData }) {
     return (
         <>
             <Container maxWidth={"md"}>
@@ -33,6 +33,13 @@ function Personal() {
                                 className="text_input"
                                 type="text"
                                 placeholder="Enter Name"
+                                onChange={(e) => {
+                                    setFormData({
+                                        ...formData,
+                                        name: e.target.value,
+                                    });
+                                }}
+                                value={formData.name}
                             />
                         </Box>
                         <Box
@@ -50,6 +57,13 @@ function Personal() {
                                 className="text_input"
                                 type="text"
                                 placeholder="Enter Email"
+                                onChange={(e) => {
+                                    setFormData({
+                                        ...formData,
+                                        mail: e.target.value,
+                                    });
+                                }}
+                                value={formData.mail}
                             />
                         </Box>
                         <Box
@@ -67,6 +81,13 @@ function Personal() {
                                 className="text_input"
                                 type="text"
                                 placeholder="Enter Phone Number"
+                                onChange={(e) => {
+                                    setFormData({
+                                        ...formData,
+                                        phone: e.target.value,
+                                    });
+                                }}
+                                value={formData.phone}
                             />
                         </Box>
                     </Grid>
@@ -97,6 +118,13 @@ function Personal() {
                                 className="text_input"
                                 type="password"
                                 placeholder="Enter Password"
+                                onChange={(e) => {
+                                    setFormData({
+                                        ...formData,
+                                        pass: e.target.value,
+                                    });
+                                }}
+                                value={formData.pass}
                             />
                         </Box>
                         <Box
@@ -114,6 +142,13 @@ function Personal() {
                                 className="text_input"
                                 type="password"
                                 placeholder="Retype Password"
+                                onChange={(e) => {
+                                    setFormData({
+                                        ...formData,
+                                        rePass: e.target.value,
+                                    });
+                                }}
+                                value={formData.rePass}
                             />
                         </Box>
                     </Grid>
@@ -144,6 +179,13 @@ function Personal() {
                                 className="text_input"
                                 type="text"
                                 placeholder="Complex Role"
+                                onChange={(e) => {
+                                    setFormData({
+                                        ...formData,
+                                        role: e.target.value,
+                                    });
+                                }}
+                                value={formData.role}
                             />
                         </Box>
                     </Grid>
